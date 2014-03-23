@@ -1,0 +1,164 @@
+@persist [Law1 Law2 Law3 Law4 Law5 Law6 Law7 Law8 Law9 Law10]:string Say:array
+                                                #################################
+                                                #                               #
+                                                # Set your default command here #
+                                                          Command = "-" 
+                                                #                               #        
+                                                #                               #
+                                                #################################
+                                                
+                                            #################################################################################
+                                            #                                                                               #
+                                            #                           Set your default laws here                          #
+                                                Law1 = "All guns are illegal! - Expect for CP"                              #
+                                                Law2 = "No vandalism - IE: shooting windows"                                #
+                                                Law3 = "Entering the PD without permissions is not permitted"               #
+                                                Law4 = "All drugs other then Cannabis are illegal"                          #
+                                                Law5 = "Public indecency/disturbance is illegal - IE: Swearing"             #
+                                                Law6 = "Being outside during a lockdown will get you arrested or killed"    #
+                                                Law7 = "Raiding tools are illegal - So are flashbangs"                      #
+                                                Law8 = "Only I, the Mayor, may bail people"                                 #
+                                                Law9 = "Any threats or disrecpt towards CP or peers is illegal"             #
+                                               Law10 = "Prank calling and Spamming 911 is illegal"
+                                            #                                                                               #
+                                            #                                                                               #
+                                            #################################################################################
+                                            
+                                            #################################################################################
+                                            #                           Set your Broadcasts                                 #
+                                            #                                                                               #
+                                                Broadcast1 = "/madvert " 
+                                                Broadcast2 = "/madvert "
+                                                Broadcast3 = "/madvert "
+                                                Broadcast4 = "/madvert "
+                                                Broadcast5 = "/madvert "
+                                                Broadcast6 = "/madvert "
+                                                Broadcast7 = "/madvert "
+                                                Broadcast8 = "/madvert "
+                                                Broadcast9 = "/madvert "
+                                               Broadcast10 = "/madvert "
+                                            
+                                            #                                                                               #
+                                            #                                                                               #
+                                            #################################################################################
+    interval(500)
+    runOnChat(1)
+    
+    if(first() | duped()){
+        setName(owner():name() + "'s Mayor E2" + "\n Made by: Ryder" + "\n Version: 1.0.0")
+         
+        Say = array(Broadcast1,Broadcast2,Broadcast3,Broadcast4,Broadcast5,Broadcast6,Broadcast7,Broadcast8,Broadcast9,Broadcast10)
+        
+        if(owner():team():teamName() != "Mayor"){
+            print("You have to be Mayor to use this E2.")
+            selfDestruct()
+        }
+        
+        function void commands(){
+            print("--------------------------Commands--------------------------")
+            print(Command + "Help - Print commands")  
+            print(Command + "Lockdown - Start's a Lockdown and adverts it")
+            print(Command + "Addlaws - Adds your 10 default set laws")
+            print(Command + "Broadcast - Madverts your selected Broadcast")
+        }
+        
+        commands()    
+    }
+    
+    if(chatClk(owner())){
+        A = owner():lastSaid():explode(" ")
+        if(A[1,string] == Command + "help"){
+            commands()
+            hideChat(1)
+        }
+        
+        if(A[1,string] == Command + "lockdown"){
+            timer("Lockdown",300)
+            hideChat(1)
+        }
+        
+        if(A[1,string] == Command + "addlaws"){
+            timer("AL1",300)
+            hideChat(1)
+        }
+        
+        if(A[1,string] == Command + "broadcast"){
+            timer("say",1000)
+        }
+    }
+    
+        if(clk("Lockdown")){ 
+            concmd("say /lockdown")
+            timer("LD",1000)
+        }
+        
+        if(clk("LD")){
+            concmd("say /madvert There is a lockdown in effect! Be inside within the next 30 seconds or be arrested or killed")
+        }
+        
+        if(clk("Advert")){
+            concmd("say /madvert Be sure to read all laws. It is your fault if you don't know them!")
+        }
+        
+        if(clk("say")){
+            concmd("say " + Say[randint(1,Say:count()),string])
+        }
+
+        if(clk("AL1")){
+            concmd("say /addlaw " + Law1)
+            timer("AL2",1000)
+        }
+        
+        if(clk("AL2")){
+            concmd("say /addlaw " + Law2)
+            timer("AL3",1000)
+        }
+        
+        if(clk("AL3")){
+            concmd("say /addlaw " + Law3)
+            timer("AL4",1000)
+        }
+        
+        if(clk("AL4")){
+            concmd("say /addlaw " + Law4)
+            timer("AL5",1000)
+        }
+        
+        if(clk("AL5")){
+            concmd("say /addlaw " + Law5)
+            timer("AL6",1000)
+        }
+        
+        if(clk("AL6")){
+            concmd("say /addlaw " + Law6)
+            timer("AL7",1000)
+        }
+        
+        if(clk("AL7")){
+            concmd("say /addlaw " + Law7)
+            timer("AL8",1000)
+        }
+        
+        if(clk("AL8")){
+            concmd("say /addlaw " + Law8)
+            timer("AL9",1000)
+        }
+        
+        if(clk("AL9")){
+            concmd("say /addlaw " + Law9)
+            timer("AL10",1000)
+        } 
+            
+        if(clk("AL10")){
+            concmd("say /addlaw " + Law10)
+        }
+        
+    timer("Advert",120000)
+
+
+#[
+    If you paid for this you were scammed, this was released for free on ByB servers. -- Contact Ryder
+    Don't take credit or sell this E2 with permission from Ryder
+]#
+    
+
