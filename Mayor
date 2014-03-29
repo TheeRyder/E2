@@ -57,7 +57,7 @@
         
         if(owner():team():teamName() != "Mayor"){
             print("You have to be Mayor to use this E2.")
-            #selfDestruct()
+            selfDestruct()
         }
         
         function void commands(){
@@ -79,8 +79,7 @@
         }
         
         if(A[1,string] == Command + "lockdown"){
-            Reason = owner():lastSaid()
-            print(Reason)
+            timer("Lockdown",300)
             hideChat(1)
         }
         
@@ -100,7 +99,7 @@
         }
         
         if(clk("LD")){
-            print("There is a lockdown because of" + Reason + ". You have 30 seconds to get inside.")
+            print("There is a lockdowd! You have 30 seconds to get inside.")
         }
         
         if(clk("Advert")){
