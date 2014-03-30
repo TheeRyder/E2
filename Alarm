@@ -1,0 +1,15 @@
+@inputs Keypad1 Keypad2 Safe
+@persist [Status1 Status2 Status3]:string
+
+  if(first()){
+    setName(owner():name() + "'s Alarm")
+  }
+  
+  if(~Keypad1 & Keypad1){
+    hint("Keypad #1 Cracked",10)
+  }elseif(~Keypad2 & Keypad2){
+    hint("Keypad #2 Cracked",10)
+  }elseif(~Safe & Safe){
+    hint("The safe has been cracked",10)
+  }
+
