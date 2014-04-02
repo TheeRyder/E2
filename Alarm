@@ -12,3 +12,9 @@
     }elseif(~Safe & Safe){
         hint("The safe has been cracked",10)
     }
+
+#[
+    If you paid for this you were scammed, this was released for free on ByB servers. -- Contact Ryder
+    By placing this E2 you agree to the TOS.
+    Check for updates @ https://github.com/TheeRyder/E2/blob/master/Alarm
+]#
