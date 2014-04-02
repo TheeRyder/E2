@@ -3,15 +3,13 @@
 @persist [Status1 Status2 Status3]:string
 @trigger 
         
-
-    
-        
     if(first()){
-        setName(Name + "'s Shop E2\n Made by: Ryder\n Version: 1.0.0" )
-        
         Store = ""
         Location = ""
         Name = owner():name()
+                
+        setName(Name + "'s Shop E2\n Made by: Ryder\n Version: 1.0.0" )
+        
         
         E:egpClear()
         E1:egpClear()
@@ -48,10 +46,8 @@
         concmd("say /advert Come down to " + Name + "'s " + Store + ". It is located " + Location)
     }
 
-
-
 #[
     If you paid for this you were scammed, this was released for free on ByB servers. -- Contact Ryder
-    Don't take credit or sell this E2 with permission from Ryder
+    By placing this E2 you agree to the TOS.
     Check for updates @ https://github.com/TheeRyder/E2/blob/master/Mayor
 ]#
