@@ -1,6 +1,6 @@
 E2
 ==
-Do not sell any E2's in here without my permissions 
+Do not sell take credit any E2's in here without my permissions 
 
 All E2's in this folder belong to Ryder @ ByB
 
