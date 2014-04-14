@@ -17,10 +17,10 @@
                                                 Law3 = "Entering the PD without permissions is not permitted"               
                                                 Law4 = "All drugs other then Cannabis are illegal"                          
                                                 Law5 = "Public indecency/disturbance is illegal - IE: Swearing"             
-                                                Law6 = "Being outside during a lockdown will get you arrested or killed"    
-                                                Law7 = "Raiding tools are illegal - So are flashbangs"                      
+                                                Law6 = "Being outside during a lock down will get you arrested or killed"    
+                                                Law7 = "Raiding tools are illegal - So are flash bangs"                      
                                                 Law8 = "Only I, the Mayor, may bail people"                                 
-                                                Law9 = "Any threats or disrecpt towards CP or peers is illegal"             
+                                                Law9 = "Any threats or disrespect towards CP or peers is illegal"             
                                                Law10 = "Prank calling and Spamming 911 is illegal"
                                             
                                             #                                                                               #
@@ -51,23 +51,23 @@
     runOnChat(1)
     
     if(first() | duped()){
-        setName(owner():name() + "'s Mayor E2" + "\n Made by: Ryder" + "\n Version: 1.0.0")
+        setName(owner():name() + "'s Mayor E2" + "\n Made by: Ryder" + "\n Version: 1.0.1")
          
         Say = array(Broadcast1,Broadcast2,Broadcast3,Broadcast4,Broadcast5,Broadcast6,Broadcast7,Broadcast8,Broadcast9,Broadcast10)
         
         if(owner():team():teamName() != "Mayor"){
             print("You have to be Mayor to use this E2.")
-            #selfDestruct()
+            selfDestruct()
         }
         
         function void commands(){
-            print("--------------------------Commands--------------------------")
-            print(Command + "Help - Print commands")  
-            print(Command + "Lockdown - Start's a Lockdown and adverts it")
-            print(Command + "Addlaws - Adds your 10 default set laws")
-            print(Command + "Broadcast - Madverts your selected Broadcast")
+            printColor(vec(255,255,255), "--------------------------, vec(0,0,255)Commands, vec(255,255,255), --------------------------")
+            print(Command + "help - Print commands")  
+            print(Command + "ld - Starts a Lock down and adverts it")
+            print(Command + "addlaws - Adds your 10 default set laws")
+            print(Command + "broadcast <number> - Madverts your selected broadcast")
+			print(Command + "printbroadcast <number> - Prints your selected broadcast")
         }
-        
         commands()    
     }
     
@@ -78,30 +78,39 @@
             hideChat(1)
         }
         
-        if(A[1,string] == Command + "lockdown"){
-            Reason = owner():lastSaid()
-            print(Reason)
+        if(A[1,string] == Command + "ld"){
+			timer("LD",300)
             hideChat(1)
         }
         
         if(A[1,string] == Command + "addlaws"){
-            timer("AL1",300)
+            timer("AL1",1000)
             hideChat(1)
         }
         
         if(A[1,string] == Command + "broadcast"){
             timer("say",1000)
+			hidechat(1)
         }
+		
+		if(A[1,string] == Command + "printbroadcast"){
+			print(Say[randint(1,Say:count()),string]))
+			hideChat(1)
+		}
     }
     
         if(clk("Lockdown")){ 
-            concmd("say /lockdown" )
-            timer("LD",1000)
+            timer("LD",300)
         }
         
         if(clk("LD")){
-            print("There is a lockdown because of" + Reason + ". You have 30 seconds to get inside.")
+            concmd("say /madvert There is a lock down in effect. You have 30 seconds to get inside.")
+			timer("LD1",300)
         }
+		
+		if(clk("LD1")){
+			concmd("say /lockdown")
+		}
         
         if(clk("Advert")){
             concmd("say /madvert Be sure to read all laws. It is your fault if you don't know them!")
@@ -158,6 +167,7 @@
             
         if(clk("AL10")){
             concmd("say /addlaw " + Law10)
+			printColor(vec(0,255,0), "All laws have been added! \n vec(255,0,0), Check to be sure!")
         }
         
     timer("Advert",120000)
@@ -169,4 +179,3 @@
     Check for updates @ https://github.com/TheeRyder/E2/blob/master/Mayor
 ]#
     
-
