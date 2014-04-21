@@ -1,0 +1,45 @@
+@name Base Control
+@inputs E:wirelink
+@outputs 
+@persist Allow:array
+@trigger 
+
+    runOnChat(1)
+
+    if(first()){
+        setName(owner():name() + "'s Base Control")
+        Allow[1,entity]=owner()
+    
+    }
+
+    for(I=1, Allow:count()){
+        if(!Allow[I,entity]:isPlayer()){ 
+            Allow:remove(I)
+        }        
+    } 
+
+    if(chatClk(owner())){
+        A=owner():lastSaid():explode(" ")
+        if(A[1,string] == "-add"){
+            hideChat(1)
+            Already=0
+            Player = findPlayerByName(A[2,string])
+            if(Player:isPlayer()){
+                for(I=1,Allow:count()){
+                    if(Player == Allow[I,entity]){
+                        Already=1
+                        if(Already == 1){
+                        printColor(vec(255,0,0), Player:name() + " is already on the allow list.")
+                        }
+                        if(Already == 0){
+                            Allow:pushEntity(Player)
+                            printColor(vec(255,0,0), Player:name() + " was added to the allow list.")
+                        }
+                        if(){
+                            printColor(vec(255,0,0), "Could not find" + Player:name())
+                        }
+                    }
+                }
+            }
+        }
+    }    
