@@ -8,8 +8,47 @@
 
     if(first()){
         setName(owner():name() + "'s Base Control")
+        
         Allow[1,entity]=owner()
+        
+        Distance = 20
+        
+        E:egpClear()
     
+        E:egpBox(1, vec2(256,256), vec2(512,512))
+        E:egpMaterial(1,"console/background04_widescreen")
+        E:egpColor(1,vec(80,80,80))
+            
+        E:egpCircleOutline(16,vec2(5,5),vec2(5,5))
+        E:egpColor(16,vec(255,0,0))
+        E:egpParentToCursor(16)
+    
+        
+        function wirelink:bottum(){        
+            E:egpBox(2, vec2(0,475), vec2(1100,100))
+            E:egpColor(2, vec(150,150,150))
+            
+            E:egpRoundedBox(3, vec2(105,475), vec2(205,95))
+            E:egpColor(3, vec(0,0,0))
+                   
+            E:egpRoundedBox(4, vec2(105,475), vec2(200,90))
+            E:egpColor(4, vec(0,0,200))
+            
+            E:egpText(5, "Gang List", vec2(40,450))
+            E:egpSize(5, 30)
+            
+            E:egpRoundedBox(6, vec2(408,475), vec2(205,95))
+            E:egpColor(6, vec(0,0,0))
+            
+            E:egpRoundedBox(7, vec2(408,475), vec2(200,90))
+            E:egpColor(7, vec(0,0,200))
+            
+            E:egpText(8, "Security", vec2(360,450))
+            E:egpSize(8, 30)
+            
+            E:egpBox(9, vec2(256,480), vec2(125,125))
+            E:egpMaterial(9, "gui/gmod_logo")
+        }
     }
 
     for(I=1, Allow:count()){
@@ -22,24 +61,30 @@
         A=owner():lastSaid():explode(" ")
         if(A[1,string] == "-add"){
             hideChat(1)
-            Already=0
+            Already = 0
             Player = findPlayerByName(A[2,string])
             if(Player:isPlayer()){
-                for(I=1,Allow:count()){
+                for(I=1, Allow:count()){
                     if(Player == Allow[I,entity]){
-                        Already=1
-                        if(Already == 1){
+                        Already = 1
                         printColor(vec(255,0,0), Player:name() + " is already on the allow list.")
-                        }
-                        if(Already == 0){
-                            Allow:pushEntity(Player)
-                            printColor(vec(255,0,0), Player:name() + " was added to the allow list.")
-                        }
-                        if(){
-                            printColor(vec(255,0,0), "Could not find" + Player:name())
-                        }
+                    }elseif(Already == 0){
+                        Allow:pushEntity(Player)
+                        printColor(vec(255,0,0), Player:name() + " was added to the allow list.")
+                    }else{
+                        print(Player:name() + " was not found.")
                     }
                 }
             }
         }
-    }    
+    }
+      
+    if(findCanQuery()){
+        findIncludeClass("player")
+        findInSphere(E:entity():pos(),1000)
+        Player = findClosest(E:entity():pos()) 
+    }
+   
+    Pos = round(E:egpCursor(Player))
+    Use = (changed(Player:keyUse()==1)&Player:keyUse()==1)
+      
