@@ -12,7 +12,7 @@
                                             #                                                                               #
                                             #                           Set your default laws here                          #
                                                 
-                                                Law1 = "All guns are illegal! - Expect for CP"                              
+                                                Law1 = "All guns are illegal! - CP are exempt from this law"                              
                                                 Law2 = "No vandalism - IE: shooting windows"                                
                                                 Law3 = "Entering the PD without permissions is not permitted"               
                                                 Law4 = "All drugs other then Cannabis are illegal"                          
@@ -79,7 +79,7 @@
         }
         
         if(A[1,string] == Command + "ld"){
-			timer("LD",300)
+	    timer("LD",300)
             hideChat(1)
         }
         
@@ -90,13 +90,13 @@
         
         if(A[1,string] == Command + "broadcast"){
             timer("say",1000)
-			hidechat(1)
+	    hidechat(1)
         }
 		
-		if(A[1,string] == Command + "printbroadcast"){
-			print(Say[randint(1,Say:count()),string]))
-			hideChat(1)
-		}
+	if(A[1,string] == Command + "printbroadcast"){
+		print(Say[randint(1,Say:count()),string]))
+		hideChat(1)
+	}
     }
     
         if(clk("Lockdown")){ 
@@ -167,7 +167,7 @@
             
         if(clk("AL10")){
             concmd("say /addlaw " + Law10)
-			printColor(vec(0,255,0), "All laws have been added! \n vec(255,0,0), Check to be sure!")
+            printColor(vec(0,255,0), "All laws have been added! \n vec(255,0,0), Check to be sure!")
         }
         
     timer("Advert",120000)
