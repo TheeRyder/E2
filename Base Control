@@ -1,7 +1,7 @@
 @name Base Control
 @inputs E:wirelink [User]:entity
 @outputs 
-@persist Allow:array Player:entity Name:string
+@persist Allow:array Player:entity Name:string Page:number
 @trigger User
 
     runOnChat(1)
@@ -10,8 +10,6 @@
         setName(owner():name() + "'s Base Control")
         
         Allow[1,entity] = owner()
-
-		      A = owner():lastSaid():explode(" ")
         
         function wirelink:menu(){
             E:egpClear()
@@ -48,6 +46,74 @@
             E:egpColor(16,vec(255,0,0))
             E:egpParentToCursor(16)
         }   
+        function wirelink:gangList(){
+            E:egpClear()
+        
+            E:egpBox(10, vec2(256,256), vec2(512,512))
+            E:egpMaterial(10, "console/background04_widescreen")
+        
+        			 E:egpBox(11, vec2(0,475), vec2(1100,100))
+        		  E:egpColor(11, vec(150,150,150))
+        
+        		 	E:egpRoundedBox(12, vec2(105,475), vec2(205,95))
+        			 E:egpColor(12, vec(0,0,0))
+        
+          		E:egpRoundedBox(13, vec2(105,475), vec2(200,90))
+        		 	E:egpColor(13, vec(0,0,200))
+        
+         			E:egpText(14, "Main Menu", vec2(40,450))
+        	 		E:egpSize(14, 30)
+        
+         			E:egpRoundedBox(15, vec2(408,475), vec2(205,95))
+        	 		E:egpColor(15, vec(0,0,0))
+        
+         			E:egpRoundedBox(16, vec2(408,475), vec2(200,90))
+        	 		E:egpColor(16, vec(0,0,200))
+        
+         			E:egpText(17, "Security", vec2(360,450))
+        	 		E:egpSize(17, 30)
+        
+         			E:egpBox(18, vec2(256,480), vec2(125,125))
+        	 		E:egpMaterial(18, "gui/gmod_logo")                  
+        
+         			E:egpCircleOutline(25, vec2(5,5),vec2(5,5))
+        	 		E:egpColor(25, vec(255,0,0))
+        		 	E:egpParentToCursor(25)
+        }
+        function wirelink:security(){
+            E:egpClear()
+        
+            E:egpBox(1, vec2(256,256), vec2(512,512))
+            E:egpMaterial(1, "console/background04_widescreen")
+        
+        			 E:egpBox(2, vec2(0,475), vec2(1100,100))
+        		  E:egpColor(2, vec(150,150,150))
+        
+        		 	E:egpRoundedBox(3, vec2(105,475), vec2(205,95))
+        			 E:egpColor(3, vec(0,0,0))
+        
+          		E:egpRoundedBox(4, vec2(105,475), vec2(200,90))
+        		 	E:egpColor(4, vec(0,0,200))
+        
+         			E:egpText(5, "Gang List", vec2(40,450))
+        	 		E:egpSize(5, 30)
+        
+         			E:egpRoundedBox(6, vec2(408,475), vec2(205,95))
+        	 		E:egpColor(6, vec(0,0,0))
+        
+         			E:egpRoundedBox(7, vec2(408,475), vec2(200,90))
+        	 		E:egpColor(7, vec(0,0,200))
+        
+         			E:egpText(8, "Main Menu", vec2(340,450))
+        	 		E:egpSize(8, 30)
+        
+         			E:egpBox(9, vec2(256,480), vec2(125,125))
+        	 		E:egpMaterial(9, "gui/gmod_logo")                  
+        
+         			E:egpCircleOutline(30, vec2(5,5),vec2(5,5))
+        	 		E:egpColor(30, vec(255,0,0))
+        		 	E:egpParentToCursor(30)    
+        }		
         function number pIR(Num:number){
             local O = E:egpCursor(User)
             local O = E:egpCursor(User)
@@ -61,48 +127,11 @@
                 return 0
             }
         }
-        function wirelink:gangList(){
-            E:egpClear()
-        
-            E:egpBox(2, vec2(256,256), vec2(512,512))
-            E:egpMaterial(2, "console/background04_widescreen")
-        
-        			 E:egpBox(3, vec2(0,475), vec2(1100,100))
-        		  E:egpColor(3, vec(150,150,150))
-        
-        		 	E:egpRoundedBox(4, vec2(105,475), vec2(205,95))
-        			 E:egpColor(4, vec(0,0,0))
-        
-          		E:egpRoundedBox(5, vec2(105,475), vec2(200,90))
-        		 	E:egpColor(5, vec(0,0,200))
-        
-         			E:egpText(6, "Main Menu", vec2(40,450))
-        	 		E:egpSize(6, 30)
-        
-         			E:egpRoundedBox(7, vec2(408,475), vec2(205,95))
-        	 		E:egpColor(7, vec(0,0,0))
-        
-         			E:egpRoundedBox(8, vec2(408,475), vec2(200,90))
-        	 		E:egpColor(8, vec(0,0,200))
-        
-         			E:egpText(9, "Security", vec2(360,450))
-        	 		E:egpSize(9, 30)
-        
-         			E:egpBox(10, vec2(256,480), vec2(125,125))
-        	 		E:egpMaterial(10, "gui/gmod_logo")                  
-               
-         			E:egpText(11, Name, vec2(135,43))
-        	 		E:egpColor(11, vec(0,0,0))
-        		 	E:egpSize(11, 50) 
-        
-         			E:egpCircleOutline(25, vec2(5,5),vec2(5,5))
-        	 		E:egpColor(25, vec(255,0,0))
-        		 	E:egpParentToCursor(25)
-        }		
         E:menu()
     } 
-
+       
     if(chatClk(owner())){
+        A = owner():lastSaid():explode(" ")
         if(A[1,string] == "-add"){
             Already = 0
             Player = findPlayerByName(A[2,string])
@@ -120,30 +149,48 @@
             }
         }
     }
-    
-    if(clk("MenuChange1")){
-        Menu = 1
-    }
-    
-    if(clk("MenuChange2")){
-        Menu = 0
-        E:menu()
-    }
-    
+                        
     if(User){
         if(pIR(4)){
-            timer("MenuChange1",100)
-        }
-        if(pIR(7)){
+            timer("Gang",100)
         }
     }
     
-    if(Menu == 1){            
+    if(clk("Gang")){
+        Page = 1
+    }
+    if(clk("Main")){
+        Page = 2
+    }
+    if(clk("Security")){
+        Page = 3
+    } 
+       
+    if(Page == 1){            
         E:gangList()
         for(I=1,Allow:count()){
-            E:egpText(I, Allow[I,string], vec2(120,100 + (40 * I))) 
+            if(I <= 9){
+                E:egpText(I, Allow[I,entity]:name():left(18), vec2(150,0 + (40 * I)))
+                E:egpColor(I, vec(0,0,255))
+                E:egpSize(I, 30)
+            }else{
+                E:egpText(I, Allow[I,entity]:name():left(18), vec2(310,140 + (30 * (I - 9))))
+                E:egpColor(I, vec(0,0,255))
+            } 
         }
-        if(User & pIR(4)){
-            timer("MenuChange2",100)
-		      }
+        if(User & pIR(13)){
+            timer("Main",100)
+        }
+        if(User & pIR(16)){
+            timer("Security",100)
+        }
     }
+        
+    if(Page == 2){
+        E:menu()
+    }   
+    
+    if(Page == 3){
+        E:security()
+    }
+
