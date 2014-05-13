@@ -1,6 +1,6 @@
 @outputs Fade
 
-    interval(500)
+    interval(250)
     
     if(first()){
         setName(owner():name() + "'s Single Person Door")
