@@ -5,11 +5,14 @@
 @trigger User
 
     runOnChat(1)
+    interval(1000)
     
-    if(first() | changed(E)){
+    if(first() | changed(E)){    
         setName(owner():name() + "'s Base Control")
         
         Allow[1,entity] = owner()
+        
+        Page = 2
         
         function wirelink:menu(){
             E:egpClear()
@@ -127,17 +130,16 @@
                 return 0
             }
         }
-        E:menu()
     } 
        
     if(chatClk(owner())){
         A = owner():lastSaid():explode(" ")
-        if(A[1,string] == "-add"){
+        if(A[1,string] == "!add"){
             Already = 0
             Player = findPlayerByName(A[2,string])
 			         hideChat(1)
             if(Player:isPlayer()){
-                for(I=1, Allow:count()){
+                for(I=1,Allow:count()){
                     if(Player == Allow[I,entity]){
                         Already = 1
                         printColor(vec(255,0,0), Player:name() + " is already on the allow list.")
@@ -173,24 +175,40 @@
                 E:egpText(I, Allow[I,entity]:name():left(18), vec2(150,0 + (40 * I)))
                 E:egpColor(I, vec(0,0,255))
                 E:egpSize(I, 30)
-            }else{
-                E:egpText(I, Allow[I,entity]:name():left(18), vec2(310,140 + (30 * (I - 9))))
-                E:egpColor(I, vec(0,0,255))
-            } 
+            }
         }
-        if(User & pIR(13)){
-            timer("Main",100)
-        }
-        if(User & pIR(16)){
-            timer("Security",100)
+        if(User){
+            if(pIR(13)){
+                timer("Main",100)
+            }
+            if(pIR(16)){
+                timer("Security",100)
+            }
         }
     }
         
     if(Page == 2){
         E:menu()
+        if(User){
+            if(pIR(4)){
+                timer("Gang",100)
+            }
+            if(pIR(7)){
+                timer("Security",100)
+            }
+        }
+        
     }   
     
     if(Page == 3){
         E:security()
+        if(User){
+            if(pIR(4)){
+                timer("Gang",100)
+            }
+            if(pIR(7)){
+                timer("Main",100)
+            }
+        }
     }
 
