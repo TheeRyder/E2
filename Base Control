@@ -1,11 +1,10 @@
 @name Base Control
-@inputs E:wirelink [User]:entity
-@outputs 
-@persist Allow:array Player:entity Name:string Page:number
+@inputs E:wirelink User:entity Keypad1 Keypad2 Safe [R1 R2]:entity
+@outputs
+@persist Allow:array Player:entity Page:number 
 @trigger User
 
     runOnChat(1)
-    interval(1000)
     
     if(first() | changed(E)){    
         setName(owner():name() + "'s Base Control")
@@ -76,8 +75,8 @@
          			E:egpText(17, "Security", vec2(360,450))
         	 		E:egpSize(17, 30)
         
-         			E:egpBox(18, vec2(256,480), vec2(125,125))
-        	 		E:egpMaterial(18, "gui/gmod_logo")                  
+            E:egpBox(18, vec2(256,480), vec2(125,125))
+            E:egpMaterial(18, "gui/gmod_logo")             
         
          			E:egpCircleOutline(25, vec2(5,5),vec2(5,5))
         	 		E:egpColor(25, vec(255,0,0))
@@ -88,6 +87,7 @@
         
             E:egpBox(1, vec2(256,256), vec2(512,512))
             E:egpMaterial(1, "console/background04_widescreen")
+            E:egpColor(1, vec(157,163,160))
         
         			 E:egpBox(2, vec2(0,475), vec2(1100,100))
         		  E:egpColor(2, vec(150,150,150))
@@ -110,8 +110,26 @@
          			E:egpText(8, "Main Menu", vec2(340,450))
         	 		E:egpSize(8, 30)
         
-         			E:egpBox(9, vec2(256,480), vec2(125,125))
-        	 		E:egpMaterial(9, "gui/gmod_logo")                  
+            E:egpBox(9, vec2(256,480), vec2(125,125))
+            E:egpMaterial(9, "gui/gmod_logo")
+      
+            E:egpBox(10, vec2(256,50), vec2(250,50))            
+            E:egpColor(10, vec(0,0,255))
+            
+            E:egpBoxOutline(11, vec2(256,50), vec2(250,50))
+            E:egpColor(11, vec(0,0,0)) 
+            
+            E:egpText(12, "Call 911", vec2(210,35))  
+            E:egpSize(12, 30)      
+
+            E:egpBox(13, vec2(256,150), vec2(250,50))            
+            E:egpColor(13, vec(0,0,255))
+            
+            E:egpBoxOutline(14, vec2(256,150), vec2(250,50))
+            E:egpColor(14, vec(0,0,0))       
+
+            E:egpText(15, "Alert Gang of Raid", vec2(140,135))  
+            E:egpSize(15, 30) 
         
          			E:egpCircleOutline(30, vec2(5,5),vec2(5,5))
         	 		E:egpColor(30, vec(255,0,0))
@@ -137,16 +155,16 @@
         if(A[1,string] == "!add"){
             Player = findPlayerByName(A[2,string])
 			         hideChat(1)
-            if(Player:isPlayer()){
-                for(I=1,Allow:count()){
-                    if(Player == Allow[I,entity]){
-                        AA = 1
-                        printColor(vec(255,0,0), Player:name() + " is already on the allow list.")
-                    }elseif(AA != 1){
+            if(Player:isPlayer() & Allow:count() < 9){
+                for(I=1, Allow:count()){
+                    if(Player != Allow[I,entity]){
                         Allow:pushEntity(Player)
                         printColor(vec(255,0,0), Player:name() + " was added to the allow list.")
+                        break
+                    }elseif(Player == Allow[I,entity]){
+                        printColor(vec(255,0,0), Player:name() + " is already on the allow list.")
                     }elseif(!Player:isPlayer()){
-                        printColor(vec(255,0,0), Player:name() + " was not found.")       
+                        printColor(vec(255,0,0), Player:name() + " was not found.")    
                     }
                 }
             }
@@ -154,8 +172,8 @@
         if(A[1,string] == "!rem"){
             Player = findPlayerByName(A[2,string])
             hideChat(1)
-            for(I=1,Allow:count()){
-                if(Player:isPlayer() & !Player:owner() & Player == Allow[1,entity]){
+            for(I=1, Allow:count()){
+                if(!Player:owner() & Player == Allow[I,entity]){
                     Allow:remove(I)
                     printColor(vec(255,0,0), Player:name() + " has been removed from the list.")
                 }
@@ -163,39 +181,36 @@
         }
         if(A[1,string] == "!remall"){
             Allow:clear()
-            Allow[1,entity] == owner()
+            Allow[1,entity] = owner()
             printColor(vec(255,0,0), "Everyone was cleared.")
             hideChat(1)
         }
-        if(A[1,string] == "!list"){
-            for(I=1,Allow:count()){
-                printColor(vec(0,255,0), Allow[I,entity]:name())
-                hideChat(1)
-            }
-        }
-    }
-                        
-    if(User){
-        if(pIR(4)){
-            timer("Gang",100)
+        if(A[1,string] == "!channel"){
+            Channel = A[2,string]:toNumber()
         }
     }
     
     if(clk("Gang")){
         Page = 1
     }
+    
     if(clk("Main")){
         Page = 2
     }
+    
     if(clk("Security")){
         Page = 3
     } 
+    
+    if(clk("911")){
+        concmd("say /911 We are being raided and need help at my location!")
+    }
        
-    if(Page == 1){            
+    if(Page == 1){          
         E:gangList()
-        for(I=1,Allow:count()){
+        for(I=1, Allow:count()){
             if(I <= 9){
-                E:egpText(I, Allow[I,entity]:name():left(18), vec2(150,0 + (40 * I)))
+                E:egpText(I, Allow[I,entity]:name():left(20), vec2(200,0 + (40 * I)))
                 E:egpColor(I, vec(0,0,255))
                 E:egpSize(I, 30)
             }
@@ -232,6 +247,23 @@
             if(pIR(7)){
                 timer("Main",100)
             }
+            if(User == owner() & pIR(10)){
+                timer("911",100)
+            }
         }
     }
-
+    
+    if(~Keypad1 & Keypad1){
+        hint("Keypad #1 Cracked",10)
+        printColor(vec(255,0,0), "[Base Protection] ", vec(255,255,255), "The first keypad has been cracked!")
+    }elseif(~Keypad2 & Keypad2){
+        hint("Keypad #2 Cracked",10)
+        printColor(vec(255,0,0), "[Base Protection] ", vec(255,255,255), "The second keypad has been cracked!")
+    }elseif(~Safe & Safe){
+        hint("The safe has been cracked",10)
+        printColor(vec(255,0,0), "[Base Protection] ", vec(255,255,255), "The safe keypad has been cracked!")
+    }
+    
+    
+    
+    
