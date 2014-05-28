@@ -11,6 +11,8 @@
         
         E:egpClear()
         E1:egpClear()
+        
+        timer("A",100)
     }
     
     if(~Keypad1 & Keypad1){
