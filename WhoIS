@@ -28,9 +28,10 @@
                     Rank = "User | Supporter"
                 }
                 printColor(
-                vec(255,0,0), "Name: ", vec(0,255,0), Player:name(),
-                vec(255,0,0), "\nSteamID: ", vec(0,255,0), Player:steamID(),
-                vec(255,0,0), "\nRank: ", vec(0,255,0), Rank)
+                    vec(255,0,0), "Name: ", vec(0,255,0), Player:name(),
+                    vec(255,0,0), "\nSteamID: ", vec(0,255,0), Player:steamID(),
+                    vec(255,0,0), "\nRank: ", vec(0,255,0), Rank
+                )
             }
         }
     }
