@@ -2,12 +2,17 @@
 @outputs 
 @persist [Status1 Status2 Status3]:string
 @trigger 
-        
+
     if(first()){
         Name = owner():name()        
         
         setName(Name + "'s Shop E2\n Made by: Ryder\n Version: 1.0.0" )
         
+        #[
+        Set your store text and default advert
+        ]
+        Store = ""
+        AdvertText = ""
         
         E:egpClear()
         E1:egpClear()
@@ -29,21 +34,21 @@
     
     
         E:egpBox(1,vec2(300, 400),vec2(1100, 145))
-        E:egpMaterial(1,"console/background04_widescreen")
-        E:egpText(2,"      Ace's Heavy Guns!",vec2(-230, 340))
-        E:egpSize(2,100)
-        E:egpColor(2, vec(0,0,255))
+        E:egpMaterial(1, "console/background04_widescreen")
+        E:egpText(2, Store, vec2(-230, 340))
+        E:egpSize(2, 100)
+        E:egpColor(2, vec(0, 0, 255))
         
-        E1:egpRoundedBox(1,vec2(255, 345),vec2(185, 370))
-        E1:egpText(2,"Do not enter",vec2(178,275))
-        E1:egpColor(1,0,0,0,200)
-        E1:egpSize(2,30)
-        E1:egpColor(2,200,20,20,255)
+        E1:egpRoundedBox(1, vec2(255, 345),vec2(185, 370))
+        E1:egpText(2, "Do not enter", vec2(178,275))
+        E1:egpColor(1, 0, 0, 0, 200)
+        E1:egpSize(2, 30)
+        E1:egpColor(2, 200, 20, 20, 255)
 
-    timer("a",120000)
+    timer("a", 120000)
     
     if(clk("a")){
-        concmd("say /advert Need heavy weapons? Come down to Ace's heavy gun shop for cheap guns. Located right next to the pd!")
+        concmd("say /advert " + AdvertText )
     }
 
 #[
