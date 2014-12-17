@@ -1,5 +1,5 @@
 @name Autoshop
-@inputs E:wirelink [R1 R2 R3 R4 R5 R6 R7 R8 R9 R10]:entity
+@inputs E:wirelink [R1 R2 R3 R4 R5 R6 R7 R8 R9 R10 User]:entity 
 @outputs [U1 U2 U3 U4 U5 U6 U7 U8 U9 U10]:entity
 @persist [P1 P2 P3 P4 P5 P6 P7 P8 P9 P10]:number Private:array
 @trigger
@@ -10,7 +10,13 @@
 		function wirelink:drawMenu(){
 			E:egpClear()
 
-            E:egpBox(1, vec2(256,256), vec2(512,512))
-            E:egpMaterial(1, "console/background04_widescreen")
+            		E:egpBox(1, vec2(256,256), vec2(512,512))
+            		E:egpMaterial(1, "console/background04_widescreen")
+		}
+	}
+	
+	for(I=1, Private:count()){
+		if(User:isPlayer && User == Private[I,entity]){
+			
 		}
 	}
