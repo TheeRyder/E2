@@ -1,0 +1,29 @@
+@name Channel
+@inputs 
+@outputs 
+@persist Channel:number Allow:array
+@trigger
+  
+    runOnChat(1)
+  
+    if(first()){
+        A = owner():lastsaid():explode(" ")
+    }
+  
+    if(chatClk(owner())){
+        if(A[1,string == "!sethannel"]){
+            Channel = A[2,string]
+        }
+    }
+  
+    for(I=1, Allow:count()){
+        if(chatClk(Allow[I,entity])){
+            if(Allow[I,enttiy]:lastsaid():explode(" ") == "!channel"){
+                timer("A",100)
+            }
+        }
+    }
+  
+    if(clk("A")){
+        conCmd("say /pm " + Allow[I,entity]:name() + Channel:toString())
+    }
