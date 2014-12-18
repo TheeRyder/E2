@@ -1,7 +1,7 @@
 @name Channel
 @inputs 
-@outputs 
-@persist Channel:number Allow:array
+@outputs Allow:array 
+@persist Channel:number 
 @trigger
   
     runOnChat(1)
@@ -18,7 +18,7 @@
   
     for(I=1, Allow:count()){
         if(chatClk(Allow[I,entity])){
-            if(Allow[I,enttiy]:lastsaid():explode(" ") == "!channel"){
+            if(Allow[I,enttiy]:lastsaid():explode(" ")[1,string] == "!channel"){
                 timer("A",100)
             }
         }
