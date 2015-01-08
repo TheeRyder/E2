@@ -1,12 +1,12 @@
 @Name Hello World
-  if(first()){
-    timer("A",100)
-    if(clk("A")){
-      concmd("say Hello, World!")
+    if(first()){
+        timer("A",100)
+        if(clk("A")){
+            concmd("say Hello, World!")
+        }
     }
-  }
   
-  if(owner():lastsaid():explode(" ") == "Repeat"){
-    timer("A",100)
-  }
+    if(owner():lastsaid():explode(" ") == "Repeat"){
+        timer("A",100)
+    }
   
