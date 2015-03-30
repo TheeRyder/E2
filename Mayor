@@ -3,7 +3,7 @@
                                                 #################################
                                                 #                               #
                                                 # Set your default command here #
-                                                          Command = "-" 
+                                                          Command = "!" 
                                                 #                               #        
                                                 #                               #
                                                 #################################
@@ -31,21 +31,29 @@
                                             #                           Set your Broadcasts                                 #
                                             #                                                                               #
                                                
-                                                Broadcast1 = "/madvert " 
-                                                Broadcast2 = "/madvert "
-                                                Broadcast3 = "/madvert "
-                                                Broadcast4 = "/madvert "
-                                                Broadcast5 = "/madvert "
-                                                Broadcast6 = "/madvert "
-                                                Broadcast7 = "/madvert "
-                                                Broadcast8 = "/madvert "
-                                                Broadcast9 = "/madvert "
-                                               Broadcast10 = "/madvert "
+			                                                Broadcast1 = "/madvert " 
+			                                                Broadcast2 = "/madvert "
+			                                                Broadcast3 = "/madvert "
+			                                                Broadcast4 = "/madvert "
+			                                                Broadcast5 = "/madvert "
+			                                                Broadcast6 = "/madvert "
+			                                                Broadcast7 = "/madvert "
+			                                                Broadcast8 = "/madvert "
+			                                                Broadcast9 = "/madvert "
+			                                               Broadcast10 = "/madvert "
                                             
                                             
                                             #                                                                               #
                                             #                                                                               #
                                             #################################################################################
+		function void commands(){
+	    	printColor(vec(255,255,255), "--------------------------, vec(0,0,255)Commands, vec(255,255,255), --------------------------")
+	        print(Command + "help - Print commands")  
+	        print(Command + "ld - Starts a lockdown and adverts it")
+	        print(Command + "addlaws - Adds your 10 default set laws")
+	        print(Command + "broadcast <number> - Madverts your selected broadcast")
+			print(Command + "printbroadcast <number> - Prints your selected broadcast")
+	    }
     }    
     interval(500)
     runOnChat(1)
@@ -59,27 +67,17 @@
             print("You have to be Mayor to use this E2.")
             selfDestruct()
         }
-        
-        function void commands(){
-            printColor(vec(255,255,255), "--------------------------, vec(0,0,255)Commands, vec(255,255,255), --------------------------")
-            print(Command + "help - Print commands")  
-            print(Command + "ld - Starts a Lock down and adverts it")
-            print(Command + "addlaws - Adds your 10 default set laws")
-            print(Command + "broadcast <number> - Madverts your selected broadcast")
-			print(Command + "printbroadcast <number> - Prints your selected broadcast")
-        }
-        commands()    
     }
-    
-    if(chatClk(owner())){
-        A = owner():lastSaid():explode(" ")
+        
+	if(chatClk(owner())){
+   		A = owner():lastSaid():explode(" ")
         if(A[1,string] == Command + "help"){
             commands()
             hideChat(1)
         }
         
         if(A[1,string] == Command + "ld"){
-	    timer("LD",300)
+	    	timer("LD",300)
             hideChat(1)
         }
         
@@ -90,13 +88,13 @@
         
         if(A[1,string] == Command + "broadcast"){
             timer("say",1000)
-	    hidechat(1)
+	    	hidechat(1)
         }
 		
-	if(A[1,string] == Command + "printbroadcast"){
-		print(Say[randint(1,Say:count()),string]))
-		hideChat(1)
-	}
+		if(A[1,string] == Command + "printbroadcast"){
+			print(Say[randint(1,Say:count()),string]))
+			hideChat(1)
+		}
     }
     
         if(clk("Lockdown")){ 
