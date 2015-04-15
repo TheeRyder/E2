@@ -1,6 +1,6 @@
 @name Channel
-@inputs 
-@outputs Allow:array 
+@inputs Allow:array 
+@outputs 
 @persist Channel:number 
 @trigger
   
