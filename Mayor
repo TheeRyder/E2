@@ -92,7 +92,7 @@
         }
 		
 		if(A[1,string] == Command + "printbroadcast"){
-			print(Say[randint(1,Say:count()),string]))
+			print(Say [randint(1, Say:count()), string]))
 			hideChat(1)
 		}
     }
@@ -120,47 +120,47 @@
 
         if(clk("AL1")){
             concmd("say /addlaw " + Law1)
-            timer("AL2",1000)
+            timer("AL2", 1000)
         }
         
         if(clk("AL2")){
             concmd("say /addlaw " + Law2)
-            timer("AL3",1000)
+            timer("AL3", 1000)
         }
         
         if(clk("AL3")){
             concmd("say /addlaw " + Law3)
-            timer("AL4",1000)
+            timer("AL4", 1000)
         }
         
         if(clk("AL4")){
             concmd("say /addlaw " + Law4)
-            timer("AL5",1000)
+            timer("AL5", 1000)
         }
         
         if(clk("AL5")){
             concmd("say /addlaw " + Law5)
-            timer("AL6",1000)
+            timer("AL6", 1000)
         }
         
         if(clk("AL6")){
             concmd("say /addlaw " + Law6)
-            timer("AL7",1000)
+            timer("AL7", 1000)
         }
         
         if(clk("AL7")){
             concmd("say /addlaw " + Law7)
-            timer("AL8",1000)
+            timer("AL8", 1000)
         }
         
         if(clk("AL8")){
             concmd("say /addlaw " + Law8)
-            timer("AL9",1000)
+            timer("AL9", 1000)
         }
         
         if(clk("AL9")){
             concmd("say /addlaw " + Law9)
-            timer("AL10",1000)
+            timer("AL10", 1000)
         } 
             
         if(clk("AL10")){
