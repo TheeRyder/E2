@@ -4,19 +4,56 @@
 @persist [P1 P2 P3 P4 P5 P6 P7 P8 P9 P10]:number Private:array
 @trigger
 
-	if(first() | changed(E)){
+	if(first()){
 		Private[1,entity] = owner()
 		
 		function wirelink:drawMenu(){
 			E:egpClear()
 
-            		E:egpBox(1, vec2(256,256), vec2(512,512))
-            		E:egpMaterial(1, "console/background04_widescreen")
+            E:egpBox(1, vec2(256,256), vec2(512,512))
+            E:egpMaterial(1, "console/background04_widescreen")
 		}
 	}
 	
+	if(chatClk(owner())){
+		A = owner():lastSaid():explode(" ")
+		if(A[1,string] == "!rem" || A[[1,string] == "!Rem"){
+           	Player = findPlayerByName(A[2,string])
+           	hideChat(1)
+           	for(I=1, Allow:count()){
+               	if(!Player:owner() & Player == Allow[I,entity]){
+                   	Allow:remove(I)
+                   	printColor(vec(255,0,0), Player:name() + " has been removed from the list.")
+               	}
+        	}
+        }
+        if(A[1,string] == "!remall" || A[1,string] == "!Remall"){
+            Allow:clear()
+            Allow[1,entity] = owner()
+            printColor(vec(255,0,0), "Everyone was cleared.")
+            hideChat(1)
+        }
+	    if(A[1,string] == "!private" || A[1,string] == "!Private"){
+	    	Player = findPlayerByName(A[2,string])
+			hideChat(1)
+            if(Player:isPlayer() & Allow:count() < 9){
+            	for(I=1, Allow:count()){
+                	if(Player != Allow[I,entity]){
+                        Allow:pushEntity(Player)
+                        printColor(vec(255,0,0), Player:name() + " was added to the allow list.")
+                        break
+                    }elseif(Player == Allow[I,entity]){
+                        printColor(vec(255,0,0), Player:name() + " is already on the allow list.")
+                    }elseif(!Player:isPlayer()){
+                        printColor(vec(255,0,0), Player:name() + " was not found.")    
+                    }
+                }
+            }
+        }
+	
 	for(I=1, Private:count()){
 		if(User:isPlayer && User == Private[I,entity]){
-			
+				
 		}
 	}
+	
