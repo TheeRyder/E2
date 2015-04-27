@@ -1,0 +1,26 @@
+@name
+@persist  E:entity A:Array S:string
+
+    if(first()){
+        E = owner()
+        runOnChat(1)
+        print("For "!custom", enter the numbers separted by a comma! EX: 25,25,25)
+    }
+    
+    if(chatClk(owner())){
+        A = owner():lastSaid():explode(" ")
+        if(A[1,string] == "!red"){
+            Color = vec(255,0,0)        
+        }elseif(A[1,string] == "!green"){
+            Color = vec(0,255,0)
+        }elseif(A[1,string] == "!blue"){
+            Color = vec(0,0,255)
+        }elseif(A[1,string] == !custom){
+            AB = A[2,string]
+            Color = vec(AB)
+        }elseif(A[1,string] == "on"){
+            owner():setTrails(20,50,20,"trails/smoke",Color,255)}
+        }elseif(A[1,string] == "off"){
+            E:removeTrail()
+        }
+    }
