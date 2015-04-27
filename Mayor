@@ -31,16 +31,16 @@
                                             #                           Set your Broadcasts                                 #
                                             #                                                                               #
                                                
-			                                                Broadcast1 = "/madvert " 
-			                                                Broadcast2 = "/madvert "
-			                                                Broadcast3 = "/madvert "
-			                                                Broadcast4 = "/madvert "
-			                                                Broadcast5 = "/madvert "
-			                                                Broadcast6 = "/madvert "
-			                                                Broadcast7 = "/madvert "
-			                                                Broadcast8 = "/madvert "
-			                                                Broadcast9 = "/madvert "
-			                                               Broadcast10 = "/madvert "
+						                                                Broadcast1 = "/madvert " 
+						                                                Broadcast2 = "/madvert "
+						                                                Broadcast3 = "/madvert "
+						                                                Broadcast4 = "/madvert "
+						                                                Broadcast5 = "/madvert "
+						                                                Broadcast6 = "/madvert "
+						                                                Broadcast7 = "/madvert "
+						                                                Broadcast8 = "/madvert "
+						                                                Broadcast9 = "/madvert "
+						                                               Broadcast10 = "/madvert "
                                             
                                             
                                             #                                                                               #
@@ -60,9 +60,7 @@
     
     if(first() | duped()){
         setName(owner():name() + "'s Mayor E2" + "\n Made by: Ryder" + "\n Version: 1.0.1")
-         
         Say = array(Broadcast1,Broadcast2,Broadcast3,Broadcast4,Broadcast5,Broadcast6,Broadcast7,Broadcast8,Broadcast9,Broadcast10)
-        
         if(owner():team():teamName() != "Mayor"){
             print("You have to be Mayor to use this E2.")
             selfDestruct()
