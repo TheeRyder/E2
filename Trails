@@ -20,11 +20,11 @@
             AB = A[2,string]
             Color = vec(AB)
         }elseif(A[1,string] == "on"){
-            owner():setTrails(20,50,20,"trails/smoke",Color,255)
+            E:setTrails(20,50,20,"trails/smoke",Color,255)
         }elseif(A[1,string] == "off"){
             E:removeTrail()
         }elseif(A[1,string] == "refresh"){
             E:removeTrail()
-            owner():setTrails(20,50,20,"trails/smoke",Color,255)
+            E:setTrails(20,50,20,"trails/smoke",Color,255)
         }
     }
