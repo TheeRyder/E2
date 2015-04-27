@@ -4,7 +4,7 @@
     if(first()){
         E = owner()
         runOnChat(1)
-        print("For "!custom", enter the numbers separted by a comma! EX: 25,25,25)
+        print("For "!custom", enter the numbers separted by a comma! EX: 25,25,25")
     }
     
     if(chatClk(owner())){
