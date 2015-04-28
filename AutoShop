@@ -35,7 +35,7 @@
 	    if(A[1,string] == "!private" || A[1,string] == "!Private"){
 	    	Player = findPlayerByName(A[2,string])
 			hideChat(1)
-            if(Player:isPlayer() & Allow:count() < 9){
+            if(Player:isPlayer()){
             	for(I=1, Allow:count()){
                 	if(Player != Allow[I,entity]){
                         Allow:pushEntity(Player)
@@ -47,6 +47,9 @@
                         printColor(vec(255,0,0), Player:name() + " was not found.")    
                     }
                 }
+            }
+            if(A[1,string] == "!price" || A[1,string] == "!Price"){
+            
             }
         }
 	
