@@ -9,9 +9,45 @@
 		
 		function wirelink:drawMenu(){
 			E:egpClear()
-	        E:egpBox(1, vec2(256,256), vec2(512,512))
-	        E:egpMaterial(1, "console/background04_widescreen")
+		        E:egpBox(1, vec2(256,256), vec2(512,512))
+		        E:egpMaterial(1, "console/background04_widescreen")
 		}
+		function number updateRangers(I, S1:string, S2:string){
+			if(I == 1){
+				if(R1:isValid()){
+					R1[S,string] = S2 
+				}else{
+					print("R1 Error")
+					return 0
+				}
+			}elseif(I == 2){
+				if(R2:isValid()){
+					R2[S,string] = S2
+				}else{
+					print("R2 Error")
+					return 0
+				}
+			}elseif(I == 3){
+				if(R3:isValid()){
+					R3[S,string] = S2
+				}else{
+					print("R3 Error")
+					return 0
+				}
+			}elseif(I == 4){
+				if(R4:isValid()){
+					R4[S,string] = S2
+				}else{
+					print("R4 Error")
+					return 0
+				}
+			}elseif(I == 5){
+				if(R5:isValid()){
+					R5[S,string] = S2
+				}else{
+					print("R5 Error")
+					return 0
+				}
 	}
 	
 	if(chatClk(owner())){
