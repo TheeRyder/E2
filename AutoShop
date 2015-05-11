@@ -9,8 +9,8 @@
 		
 		function wirelink:drawMenu(){
 			E:egpClear()
-		        E:egpBox(1, vec2(256,256), vec2(512,512))
-		        E:egpMaterial(1, "console/background04_widescreen")
+		    E:egpBox(1, vec2(256,256), vec2(512,512))
+		    E:egpMaterial(1, "console/background04_widescreen")
 		}
 		function number updateRangers(I, S1:string, S2:string){
 			if(I == 1){
@@ -56,10 +56,10 @@
            	Player = findPlayerByName(A[2,string])
            	hideChat(1)
            	for(I=1, Allow:count()){
-               	if(!Player:owner() & Player == Allow[I,entity]){
-                   	Allow:remove(I)
-                   	printColor(vec(255,0,0), Player:name() + " has been removed from the list.")
-               	}
+               		if(!Player:owner() & Player == Allow[I,entity]){
+                   		Allow:remove(I)
+                   		printColor(vec(255,0,0), Player:name() + " has been removed from the list.")
+               		}
         	}
         }
         if(A[1,string] == "!remall" || A[1,string] == "!Remall"){
