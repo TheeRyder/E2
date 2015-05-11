@@ -56,10 +56,10 @@
            	Player = findPlayerByName(A[2,string])
            	hideChat(1)
            	for(I=1, Allow:count()){
-               		if(!Player:owner() & Player == Allow[I,entity]){
-                   		Allow:remove(I)
-                   		printColor(vec(255,0,0), Player:name() + " has been removed from the list.")
-               		}
+               	if(!Player:owner() & Player == Allow[I,entity]){
+                   	Allow:remove(I)
+                   	printColor(vec(255,0,0), Player:name() + " has been removed from the list.")
+               	}
         	}
         }
         if(A[1,string] == "!remall" || A[1,string] == "!Remall"){
