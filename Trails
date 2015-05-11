@@ -1,11 +1,14 @@
 @name Trails
-@persist E:entity
+@persist E:entity [X Y Z]:number
 
     runOnChat(1)
 
     if(first()){
         E = owner()
         print("For "!custom", enter the numbers separted by a comma! EX: 25,25,25")
+        X = 20
+        Y = 50 
+        Z = 20
     }
     
     if(chatClk(owner())){
@@ -16,15 +19,29 @@
             Color = vec(0,255,0)
         }elseif(A[1,string] == "!blue"){
             Color = vec(0,0,255)
-        }elseif(A[1,string] == !custom){
-            AB = A[2,string]
-            Color = vec(AB)
+        }elseif(A[1,string] == "!custom"){
+            if(A[2,string] == "color"){ 
+                Color = vec(A[3,string])
+            }elseif(A[2,string] == "startsize"){
+                X = A[3,string]
+            }elseif(A[2,string] == "endsize"){
+                Y = A[3,string]
+            }elseif(A[2,string] == "length"){
+                Z = A[3,string]
+            }
+        }elseif(A[1,string] == "startsize"){
+            if(A[2,string] == "+"){
+                X = X + 5
+            }elseif(A[2,string] == "-"){
+                X = X - 5
+            }
         }elseif(A[1,string] == "on"){
-            E:setTrails(20,50,20,"trails/smoke",Color,255)
+            E:setTrails(X, Y, Z, "trails/smoke", Color, 255)
         }elseif(A[1,string] == "off"){
             E:removeTrail()
         }elseif(A[1,string] == "refresh"){
             E:removeTrail()
-            E:setTrails(20,50,20,"trails/smoke",Color,255)
+            E:setTrails(X, Y, Z, "trails/smoke", Color, 255)
         }
     }
+    
