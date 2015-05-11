@@ -25,5 +25,5 @@
     }
   
     if(clk("A")){
-        conCmd("say /pm " + Allow[I,entity]:name() + Channel:toString())
+        concmd("say /pm " + Allow[I,entity]:name()+ " " + Channel:toString())
     }
