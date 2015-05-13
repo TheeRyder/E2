@@ -190,17 +190,11 @@
 	
     if(clk("Gang")){
         Page = 1
-    }
-    
-    if(clk("Main")){
+    }elseif(clk("Main")){
         Page = 2
-    }
-    
-    if(clk("Security")){
+    }elseif(clk("Security")){
         Page = 3
-    } 
-    
-    if(clk("911")){
+    }elseif(clk("911")){
         concmd("say /911 We are being raided and need help at my location!")
     }
        
@@ -213,12 +207,10 @@
                 E:egpSize(I, 30)
             }
         }
-        
         if(User){
             if(pIR(13)){
                 timer("Main",100)
-            }
-            if(pIR(16)){
+            }elseif(pIR(16)){
                 timer("Security",100)
             }
         }
@@ -229,8 +221,7 @@
         if(User){
             if(pIR(4)){
                 timer("Gang",100)
-            }
-            if(pIR(7)){
+            }elseif(pIR(7)){
                 timer("Security",100)
             }
         }
@@ -242,11 +233,9 @@
         if(User){
             if(pIR(4)){
                 timer("Gang",100)
-            }
-            if(pIR(7)){
+            }elseif(pIR(7)){
                 timer("Main",100)
-            }
-            if(User == owner() & pIR(10)){
+            }elseif(User == owner() & pIR(10)){
                 timer("911",100)
             }
         }
