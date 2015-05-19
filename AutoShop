@@ -84,10 +84,8 @@
                     }
                 }
             }
-            if(A[1,string] == "!price" || A[1,string] == "!Price"){
-            
-            }
         }
+   }
 	
 	for(I=1, Private:count()){
 		if(User:isPlayer && User == Private[I,entity]){
