@@ -47,6 +47,40 @@
 				}else{
 					print("R5 Error")
 					return 0
+			}elseif(I == 6){
+				if(R6:isValid()){
+					R6[S,string] = S2
+				}else{
+					print("R6 Error")
+					return 0
+				}
+			}elseif(I == 7){
+				if(R7:isValid()){
+					R7[S,string] = S2
+				}else{
+					print("R7 Error")
+					return 0
+				}
+			}elseif(I == 8){
+				if(R8:isValid()){
+					R8[S,string] = S2
+				}else{
+					print("R8 Error")
+					return 0
+				}
+			}elseif(I == 9){
+				if(R9:isValid()){
+					R9[S,string] = S2
+				}else{
+					print("R9 Error")
+					return 0
+				}
+			}elseif(I == 9){
+				if(R9:isValid()){
+					R9[S,string] = S2
+				}else{
+					print("R9 Error")
+					return 0
 				}
 	}
 	
