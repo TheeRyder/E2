@@ -1,4 +1,4 @@
-@Name Hello World
+@name Hello World
     if(first()){
         timer("A",100)
         if(clk("A")){
@@ -6,7 +6,7 @@
         }
     }
   
-    if(owner():lastsaid():explode(" ") == "Repeat"){
+    if(owner():lastSaid():explode(" ")[1,string] == "Repeat"){
         timer("A",100)
     }
   
