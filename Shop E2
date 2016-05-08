@@ -33,17 +33,17 @@
     
     
     
-        E:egpBox(1,vec2(300, 400),vec2(1100, 145))
-        E:egpMaterial(1, "console/background04_widescreen")
-        E:egpText(2, Store, vec2(-230, 340))
-        E:egpSize(2, 100)
-        E:egpColor(2, vec(0, 0, 255))
+    E:egpBox(1,vec2(300, 400),vec2(1100, 145))
+    E:egpMaterial(1, "console/background04_widescreen")
+    E:egpText(2, Store, vec2(-230, 340))
+    E:egpSize(2, 100)
+    E:egpColor(2, vec(0, 0, 255))
         
-        E1:egpRoundedBox(1, vec2(255, 345),vec2(185, 370))
-        E1:egpText(2, "Do not enter", vec2(178,275))
-        E1:egpColor(1, 0, 0, 0, 200)
-        E1:egpSize(2, 30)
-        E1:egpColor(2, 200, 20, 20, 255)
+    E1:egpRoundedBox(1, vec2(255, 345),vec2(185, 370))
+    E1:egpText(2, "Do not enter", vec2(178,275))
+    E1:egpColor(1, 0, 0, 0, 200)
+    E1:egpSize(2, 30)
+    E1:egpColor(2, 200, 20, 20, 255)
 
     timer("a", 120000)
     
