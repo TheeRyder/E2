@@ -251,7 +251,3 @@
         hint("The safe has been cracked",10)
         printColor(vec(255,0,0), "[Base Protection] ", vec(255,255,255), "The safe keypad has been cracked!")
     }
-    
-    
-    
-    
