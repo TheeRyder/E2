@@ -186,6 +186,7 @@
             printColor(vec(255,0,0), "Everyone was cleared.")
             hideChat(1)
         }
+     }
 	}
 	
     if(clk("Gang")){
